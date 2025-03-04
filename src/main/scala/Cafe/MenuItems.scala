@@ -1,7 +1,15 @@
 package Cafe
 
-case class MenuItems(name: String, price: Double, var stockCount: Int) {
+//Case class showing menu items and their params, with stock count
+case class MenuItems(name: String, price: Double, var stockCount: Int, foodType: FoodType) {
 
- def isAvailable: Boolean = stockCount > 0
+ def stockAvailable: Boolean = stockCount > 0
 
 }
+
+//Add food types to signify the different service charges
+ trait FoodType
+  case object ColdFood extends FoodType
+  case object HotFood extends FoodType
+  case object Drink extends FoodType
+
