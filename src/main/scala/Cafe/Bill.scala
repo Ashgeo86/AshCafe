@@ -9,6 +9,7 @@ class Bill(val customerChoices: List[MenuItems], val serviceCharge: Option[Doubl
   def twentyFivePercent: Double => Double = price => price * 0.25
 
   //calculate total of the bill (with and without service charge)
+
   def totalPrice: Double = {
     val total = customerChoices.map(_.price).sum
 

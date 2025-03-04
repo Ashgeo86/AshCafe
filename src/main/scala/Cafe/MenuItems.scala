@@ -9,7 +9,7 @@ case class MenuItems(name: String, price: Double, var stockCount: Int, foodType:
 
 //Add food types to signify the different service charges
  trait FoodType
+
   case object ColdFood extends FoodType
   case object HotFood extends FoodType
   case object Drink extends FoodType
-
