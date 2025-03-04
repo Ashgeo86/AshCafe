@@ -13,18 +13,16 @@ class Bill(val customerChoices: List[MenuItems], val serviceCharge: Option[Doubl
     val total = customerChoices.map(_.price).sum
 
 
-    //calculate service charge based on food type
+    //calculate service charge based on food type - No idea how to finish this!
     serviceCharge match {
       case Some(charge) => total + charge
       case None =>
         // Calculate the service charge based on food type
         val serviceChargeAmount = customerChoices.map {
-          case MenuItems(_, price, ColdFood) => tenPercent(price)
-          case MenuItems(_, price, HotFood) => twentyPercent(price)
-          case MenuItems(_, price, Drink) => 0.0
+          case MenuItems(ColdFood) => tenPercent
+          case MenuItems(HotFood) => twentyPercent
+          case MenuItems(Drink) => 0.0
         }.sum
-
-        total + serviceChargeAmount
     }
   }
 }
