@@ -1,9 +1,7 @@
 package Cafe
 
-case class MenuItems(name: String, price: Double, category: MenuItems, isPremium: Boolean)
+case class MenuItems(name: String, price: Double, var stockCount: Int) {
 
-object MenuItems {
-  case object Hotfood extends MenuItems
-  case object ColdFood extends MenuItems
-  case object Drink extends MenuItems
+ def isAvailable: Boolean = stockCount > 0
+
 }
