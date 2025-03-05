@@ -1,31 +1,34 @@
 package Cafe
 
-//Produce an itemised bill which includes total and optional service charge
+// Produce an itemized bill which includes total and optional service charge
 class Bill(val customerChoices: List[MenuItems], val serviceCharge: Option[Double] = None) {
 
-  //helper functions to calculate service charge
-  def tenPercent: Double => Double = price => price * 0.1
+  // Helper functions to calculate service charge
+  def tenPercent(price: Double): Double = price * 0.1
+  def twentyPercent(price: Double): Double = price * 0.2
+  def twentyFivePercent(price: Double): Double = price * 0.25
 
-  def twentyPercent: Double => Double = price => price * 0.2
+  // Calculate total price of the bill
+  def totalPrice: Double = customerChoices.map(_.price).sum
 
-  def twentyFivePercent: Double => Double = price => price * 0.25
+  // Calculate service charge based on food type
+  def addServiceCharge(): Double = {
+    serviceCharge.getOrElse {
+      val hasColdFood = customerChoices.exists(_.foodType == ColdFood)
+      val hasHotFood = customerChoices.exists(_.foodType == HotFood)
+      val hasPremiumFood = customerChoices.exists(_.foodType == PremiumFood)
 
-  //calculate total of the bill (with and without service charge)
-
-  def totalPrice: Double = {
-    val total = customerChoices.map(_.price).sum
-
-
-
-    //calculate service charge based on food type - No idea how to finish this!
-    def AddServiceCharge(customerChoices: List[MenuItems], serviceCharge: Option[Double] = None): Double = {
-        Bill match {
-          case service if Drink => 0.0
-          case service if ColdFood => tenPercent
-          case service if HotFood => twentyPercent
-          case service if
-          case _ => 0.0
-        }
+      val baseCharge = totalPrice match {
+        case _ if hasPremiumFood => twentyFivePercent(totalPrice)
+        case _ if hasHotFood     => twentyPercent(totalPrice)
+        case _ if hasColdFood    => tenPercent(totalPrice)
+        case _                   => 0.0 // No service charge for drinks
       }
+
+      baseCharge
+    }
   }
+
+  // Final total with service charge
+  def finalTotal: Double = totalPrice + addServiceCharge()
 }
