@@ -15,6 +15,7 @@ object Menu extends App {
     val fries = MenuItems(name = "Fries", price = 3.50, stockCount = 30, foodType = HotFood)
 
   //Premium specials that can be added/removed from the menu
+
   var premiumSpecial: List[MenuItems] = List()
 
 
