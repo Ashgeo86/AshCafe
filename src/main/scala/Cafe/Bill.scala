@@ -16,6 +16,7 @@ class Bill(val customerChoices: List[MenuItems], val serviceCharge: Option[Doubl
     val total = customerChoices.map(_.price).sum
 
 
+
     //calculate service charge based on food type - No idea how to finish this!
     def AddServiceCharge(customerChoices: List[MenuItems], serviceCharge: Option[Double] = None): Double = {
         Bill match {
