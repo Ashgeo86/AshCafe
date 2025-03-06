@@ -5,6 +5,7 @@ import Cafe.{HotFood, MenuItems}
 class MenuItemsSpec extends AnyWordSpec with Matchers {
 
   val menuItem = new MenuItems("Pizza", 10.00, 6, HotFood)
+  val menuItemNone = new MenuItems("Soup", 6.00, 0, HotFood)
   "checkStockLevel" should {
 
     "return true" when {
@@ -15,7 +16,18 @@ class MenuItemsSpec extends AnyWordSpec with Matchers {
         input shouldBe expectedResult
       }
     }
+
+    "return false" when {
+
+      "There is no more items in stock" in {
+        val input = menuItemNone.stockCount
+        val expectedResult = 0
+        input shouldBe expectedResult
+      }
+    }
   }
+
+
 
 
 }
