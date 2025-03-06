@@ -18,7 +18,7 @@ object MenuLogic extends App {
   order1.foreach { item =>
     println(s"${item.name}: £${item.price}")
   }
-  println(s"Subtotal: £${bill.totalPrice}%.2")
-  println(s"Service Charge: £${bill.addServiceCharge()}%.2")
-  println(s"Final Total: £${bill.finalTotal}%.2")
+  println(s"Subtotal: £${bill.totalPrice}%.2f")
+  println(s"Service Charge: £${bill.addServiceCharge()}%.2f")
+  println(s"Final Total: £${bill.finalTotal}%.2f")
 }

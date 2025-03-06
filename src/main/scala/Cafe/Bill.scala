@@ -22,7 +22,7 @@ class Bill(val customerChoices: List[MenuItems], val serviceCharge: Option[Doubl
         case _ if hasPremiumFood => twentyFivePercent(totalPrice)
         case _ if hasHotFood     => twentyPercent(totalPrice)
         case _ if hasColdFood    => tenPercent(totalPrice)
-        case _                   => 0.0 // No service charge for drinks
+        case _                   => 0.0
       }
 
       baseCharge
