@@ -26,8 +26,4 @@ class MenuItemsSpec extends AnyWordSpec with Matchers {
       }
     }
   }
-
-
-
-
 }
